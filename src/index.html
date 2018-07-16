@@ -1,0 +1,127 @@
+<html>
+
+<body>
+    <div id="container">
+        <div id="configuracion">
+            <div class="pictionaryconf">PICTIONARY</div>
+            <div id="mensajeConf">Seleccione el número de equipos que jugarán</div>
+            <div id="seleccionEquipos">
+                <div id="equipos2" onclick="sortearInicio(2)">2 Equipos</div>
+                <div id="equipos3" onclick="sortearInicio(3)">3 Equipos</div>
+                <div id="equipos4" onclick="sortearInicio(4)">4 Equipos</div>
+            </div>
+
+            <div id="ficha-container">
+                <div class="fichaconf ficha1" id="fichaconf1" style="display:none">•</div>
+                <div class="fichaconf ficha2" id="fichaconf2" style="display:none">•</div>
+                <div class="fichaconf ficha3" id="fichaconf3" style="display:none">•</div>
+                <div class="fichaconf ficha4" id="fichaconf4" style="display:none">•</div>
+            </div>
+            <div id="dice-container"></div>
+
+            <div id="comenzarPartida" style="display:none" onclick="iniciarPartida()">COMENZAR PARTIDA</div>
+        </div>
+        <div id="tablero" style="display:none">
+            <div class="ficha ficha1" id="ficha1" style="display:none; z-index:3">•</div>
+            <div class="ficha ficha2" id="ficha2" style="display:none; z-index:3">•</div>
+            <div class="ficha ficha3" id="ficha3" style="display:none; z-index:3">•</div>
+            <div class="ficha ficha4" id="ficha4" style="display:none; z-index:3">•</div>
+        </div>
+        <div id="statusBar" style="display:none">
+            <div class="title is-3" id="divturno"></div>
+            <div>
+                <button class="button is-fullwidth is-primary is-rounded" type="submit" onclick="sacarTarjeta()" id="btnSacarTarjeta">Sacar Tarjeta</button>
+                <br>
+                <button class="button is-fullwidth is-info is-rounded" type="submit" onmousedown="mostrarTarjeta()" onmouseup="ocultarTarjeta()" onmouseout="ocultarTarjeta()"
+                    id="btnVerTarjeta" disabled="disabled">Ver Tarjeta</button>
+                    <br>
+                <button class="button is-fullwidth is-success is-rounded" type="submit" onclick="iniciarReloj()" id="btnIniciarReloj" disabled="disabled">Iniciar Reloj</button>
+            </div>
+            <div id="todosJueganMsg" style="display:none">TODOS JUEGAN!</div>
+        </div>
+        <div id="tarjeta" style="display:none">
+            <table style="margin-left: auto; margin-right: auto;margin-top:20px;width:75%">
+                <tbody>
+                    <tr>
+                        <td colspan="3" style="text-align:center;font-size:40px;">PICTIONARY
+                            <sup style="font-size:20px;line-height:40px">®</sup>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:center">
+                            <div style="background-color:#000; height:10px; width: 70px; line-height: 0; font-size: 1px;"></div>
+                        </td>
+                        <td style="text-align:center; font-family:verdana; font-weight: bold; font-size: 13px; width: 110px; white-space: nowrap">
+                            Pancho EDITION
+                        </td>
+                        <td style="text-align:center">
+                            <div style="background-color:#000; height:10px; width: 70px; line-height: 0; font-size: 1px"></div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="palabrasTarjeta p" id="tarjPtable">
+                <tbody>
+                    <tr id="tarjPtableTR">
+                        <th>P</th>
+                        <td id="tarjP"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="palabrasTarjeta o" id="tarjOtable">
+                <tbody>
+                    <tr id="tarjOtableTR">
+                        <th>O</th>
+                        <td id="tarjO"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="palabrasTarjeta a" id="tarjAtable">
+                <tbody>
+                    <tr id="tarjAtableTR">
+                        <th>A</th>
+                        <td id="tarjA"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="palabrasTarjeta d" id="tarjDtable">
+                <tbody>
+                    <tr id="tarjDtableTR">
+                        <th>D</th>
+                        <td id="tarjD"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="palabrasTarjeta t" id="tarjTtable">
+                <tbody>
+                    <tr id="tarjTtableTR">
+                        <th>TJ</th>
+                        <td id="tarjT"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div style="text-align:right; margin-top:8px; margin-right:20px; font-size:15px; font-weight: bold;" id="tarjNro"></div>
+        </div>
+        <div id="reloj" style="display:none">
+            <div id="tiempo"></div>
+            <button class="button is-rounded is-fullwidth is-danger" type="submit" id="btnPalabraAdivinada" onclick="palabraAdivinada()">Palabra Adivinada</button>
+            <br>
+            <button class="button is-rounded is-fullwidth is-success" type="submit" id="btnPalabraNoAdivinada" onclick="palabraNOAdivinada()">Palabra NO Adivinada</button>
+        </div>
+        <div id="equipoAdivinoTJ" style="display:none">
+            <div id="mensajeEquipoAdivinoTJ">¿Qué equipo adivinó la palabra?</div>
+            <div class="ficha ficha1" id="fichaAdivino1" style="display:none; z-index:3; cursor: pointer;" onclick="avanzar(1)">•
+            </div>
+            <div class="ficha ficha2" id="fichaAdivino2" style="display:none; z-index:3; cursor: pointer;" onclick="avanzar(2)">•
+            </div>
+            <div class="ficha ficha3" id="fichaAdivino3" style="display:none; z-index:3; cursor: pointer;" onclick="avanzar(3)">•
+            </div>
+            <div class="ficha ficha4" id="fichaAdivino4" style="display:none; z-index:3; cursor: pointer;" onclick="avanzar(4)">•
+            </div>
+        </div>
+        <div id="mensajeGanador" style="display:none;"></div>
+    </div>
+
+</body>
+
+</html>

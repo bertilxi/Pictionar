@@ -1,0 +1,460 @@
+@import "~bulma";
+@import url("https://fonts.googleapis.com/css?family=Comfortaa:300,400,700");
+
+$black: hsl(0, 0%, 4%);
+$grey: hsl(0, 0%, 48%);
+$white: hsl(0, 0%, 98%);
+
+$orange: hsl(14, 100%, 53%);
+$yellow: hsl(48, 100%, 67%);
+$green: hsl(141, 71%, 48%);
+$turquoise: hsl(171, 100%, 41%);
+$cyan: hsl(204, 86%, 53%);
+$blue: hsl(217, 71%, 53%);
+$purple: hsl(271, 100%, 71%);
+$red: hsl(348, 100%, 61%);
+
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "Comfortaa", sans-serif !important;
+}
+
+body {
+  text-align: center;
+}
+
+div#container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  text-align: left;
+  background-color: darken($color: $white, $amount: 10);
+  align-content: center;
+}
+
+div#tablero {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 0;
+}
+
+div#statusBar {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+  background-color: darken($color: $white, $amount: 10);
+  z-index: 0;
+}
+
+#divturno {
+  margin: 3rem;
+  font-weight: bold;
+  font-size: 22px;
+  color: $black;
+}
+
+#todosJueganMsg {
+  padding-top: 100px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 24px;
+  width: 145px;
+  height: 90px;
+  color: $blue;
+}
+
+#accion button {
+  margin-bottom: 10px;
+}
+
+div#configuracion {
+  width: 100%;
+}
+
+div.casilla {
+  text-transform: uppercase;
+  border: solid 1px $white;
+  border-radius: 8px;
+  color: $black;
+  position: absolute;
+  font-weight: bold;
+  text-align: center;
+  line-height: 4.5em;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+div.casillaFondo {
+  border-radius: 8px;
+  background-color: $white;
+  position: absolute;
+}
+
+div.pictionary {
+  text-align: center;
+  color: $black;
+  position: absolute;
+  width: 250px;
+  height: 50px;
+  left: 225px;
+  top: 260px;
+  z-index: 1;
+  font-size: 40px;
+}
+
+div.pictionaryconf {
+  text-align: center;
+  color: $black;
+  width: 100%;
+  font-size: 100px;
+}
+
+div#mensajeConf {
+  text-align: center;
+  color: $black;
+  width: 100%;
+  font-size: 25px;
+}
+
+div.ficha {
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  display: inline-block;
+  font-size: 70px;
+  position: absolute;
+  text-align: center;
+}
+
+div.fichaconf {
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  display: inline-block;
+  font-size: 130px;
+  text-align: center;
+}
+
+#comienzaJugando {
+  color: $black;
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+  width: 100%;
+}
+
+#comenzarPartida {
+  cursor: pointer;
+  color: $black;
+  font-size: 60px;
+  font-weight: bold;
+  text-align: center;
+  width: 100%;
+  margin-top: 5rem;
+}
+
+div.equipos {
+  font-size: 18px;
+  font-weight: bold;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  text-align: center;
+  float: right;
+  cursor: default;
+  overflow: hidden;
+  z-index: 2;
+  color: $black;
+}
+
+.dado {
+  font-weight: bold;
+  font-size: 32px;
+  line-height: 15px;
+  color: $black;
+  text-align: center;
+  z-index: 5;
+}
+
+.ficha1 {
+  color: $green;
+}
+
+.ficha2 {
+  color: $cyan;
+}
+
+.ficha3 {
+  color: $red;
+}
+
+.ficha4 {
+  color: $white;
+}
+
+div.p,
+#tarjeta .p th,
+#tarjeta .p td {
+  background-color: $yellow;
+}
+
+div.o,
+#tarjeta .o th,
+#tarjeta .o td {
+  background-color: $cyan;
+}
+
+div.a,
+#tarjeta .a th,
+#tarjeta .a td {
+  background-color: $orange;
+}
+
+div.d,
+#tarjeta .d th,
+#tarjeta .d td {
+  background-color: $turquoise;
+}
+
+div.t,
+#tarjeta .t th,
+#tarjeta .t td {
+  background-color: $red;
+}
+
+#tarjeta .p tr.blink th,
+#tarjeta .p tr.blink td {
+  background-color: lighten($color: $yellow, $amount: 10);
+}
+
+#tarjeta .o tr.blink th,
+#tarjeta .o tr.blink td {
+  background-color: lighten($color: $cyan, $amount: 10);
+}
+
+#tarjeta .a tr.blink th,
+#tarjeta .a tr.blink td {
+  background-color: lighten($color: $orange, $amount: 10);
+}
+
+#tarjeta .d tr.blink th,
+#tarjeta .d tr.blink td {
+  background-color: lighten($color: $turquoise, $amount: 10);
+}
+
+#tarjeta .t tr.blink th,
+#tarjeta .t tr.blink td {
+  background-color: lighten($color: $red, $amount: 10);
+}
+
+#seleccionEquipos {
+  margin-top: 2rem;
+  width: 100%;
+}
+
+#seleccionEquipos div {
+  cursor: pointer;
+  width: 100%;
+  color: $black;
+  font-size: 50px;
+  font-weight: bold;
+  text-align: center;
+}
+
+#tarjeta {
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  width: 350px;
+  height: 430px;
+  background-color: $white;
+  top: 30px;
+  left: -139px;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+.palabrasTarjeta {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1.5rem;
+  width: 85%;
+  text-transform: uppercase;  
+  border-collapse: collapse;
+  background-color: $white;
+}
+
+.palabrasTarjeta span {
+  border-bottom-width: 0;
+  float: left;
+  font-size: 31px;
+  height: 20px;
+  line-height: 25px;
+  margin-bottom: 0;
+  margin-top: -4px;
+  margin-right: 4px;
+  overflow: hidden;
+  text-align: center;
+  top: 0;
+}
+
+.palabrasTarjeta td {
+  text-align: left;
+  padding: 8px;
+  background-color: $white;
+  border-radius: 0 256px 256px 0;
+}
+
+.palabrasTarjeta th {
+  font-weight: normal;
+  width: 20px;
+  text-align: center;
+  padding: 8px;
+  background-color: $white;
+  border-radius: 256px 0 0 256px;
+}
+
+.palabrasTarjeta.aDibujar td,
+.palabrasTarjeta.aDibujar th {
+  font-weight: bold;
+}
+
+#reloj {
+  position: relative;
+  width: 300px;
+  height: 280px;
+  top: 150px;
+  left: -139px;
+  margin: 0 auto;
+  padding: 1rem;
+  background-color: $white;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+#reloj button {
+  overflow: visible;
+  margin-bottom: 10px;
+}
+
+#tiempo.timesUp {
+  color: darken($color: $red, $amount: 10);
+}
+
+#tiempo {
+  font-weight: bold;
+  font-size: 85px;
+  color: $green;
+}
+
+#equipoAdivinoTJ {
+  text-align: center;
+  position: relative;
+  width: 300px;
+  height: 180px;
+  margin: 0 auto;
+  top: 150px;
+  left: -139px;
+  background-color: $white;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+#mensajeEquipoAdivinoTJ {
+  margin-top: 5px;
+  font-weight: bold;
+  font-size: 24px;
+  color: $green;
+  text-align: center;
+}
+
+#mensajeGanador {
+  cursor: default;
+  text-align: center;
+  position: relative;
+  width: 300px;
+  height: 205px;
+  top: 144px;
+  left: 200px;
+  border: 2px solid $black;
+  background-color: $white;
+  padding-top: 5px;
+  font-weight: bold;
+  font-size: 60px;
+  color: $green;
+}
+
+#mensajeGanador button {
+  overflow: visible;
+  margin-top: 10px;
+}
+
+#fichaAdivino1,
+#fichaAdivino2,
+#fichaAdivino3,
+#fichaAdivino4 {
+  font-size: 130px;
+  top: 40;
+  text-align: center;
+  z-index: 2;
+}
+
+.dice {
+  display: block;
+}
+
+.dice * {
+  display: block;
+  height: 1px;
+  overflow: hidden;
+  font-size: 0.01em;
+  background: $white;
+}
+
+.dice1 {
+  margin-left: 3px;
+  margin-right: 3px;
+  padding-left: 1px;
+  padding-right: 1px;
+  border-left: 1px solid #727b86;
+  border-right: 1px solid #727b86;
+  background: #c1c5ca;
+}
+
+.dice2 {
+  margin-left: 1px;
+  margin-right: 1px;
+  padding-right: 1px;
+  padding-left: 1px;
+  border-left: 1px solid #212f40;
+  border-right: 1px solid #212f40;
+  background: #d0d3d6;
+}
+
+.dice3 {
+  margin-left: 1px;
+  margin-right: 1px;
+  border-left: 1px solid #d0d3d6;
+  border-right: 1px solid #d0d3d6;
+}
+
+.dice4 {
+  border-left: 1px solid #727b86;
+  border-right: 1px solid #727b86;
+}
+
+.dice5 {
+  border-left: 1px solid #c1c5ca;
+  border-right: 1px solid #c1c5ca;
+}
+
+.dicefg {
+  margin-top: -2px;
+  background: $white;
+}
+
+#dice-container,
+#ficha-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
